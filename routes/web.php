@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cats', 'API\CatController@index');
+
+Route::get('/cats/{id}', function($id) {
+    return "Gatito con ID ".$id;
+});

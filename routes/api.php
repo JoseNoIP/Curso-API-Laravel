@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/cats', 'API\CatController@index');
+Route::post('/cats', 'API\CatController@store');
+Route::get('/cats/{id}', 'API\CatController@show');
+Route::patch('/cats/{id}', 'API\CatController@update');
+Route::delete('/cats/{id}', 'API\CatController@destroy');
