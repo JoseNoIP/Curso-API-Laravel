@@ -16,7 +16,8 @@ class CatController extends Controller
      */
     public function index()
     {
-        $cats = Cat::all();
+        $cats = Cat::select("id", "name", "color")
+        ->get();
         return $cats;
     }
 
@@ -28,6 +29,13 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required|string|max:60',
+            'color' => 'required|string|max:10'
+        ]);
+
+
         $cat = new Cat;
 
         $cat->name = $request->name;
